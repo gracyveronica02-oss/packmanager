@@ -15,7 +15,11 @@
   <nav class="nav container" aria-label="Primary navigation">
     <a class="brand" href="#top" aria-label="PackManager home"><span class="brand-mark">P</span>PackManager</a>
     <div class="nav-links">
-      <a href="#how-it-works">How it works</a><a href="#evidence">Evidence</a><a href="#metrics">Metrics</a><a href="#api">For Developers</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#operations">Operator tools</a>
+      <a href="#api">For Developers</a>
     </div>
     <a class="button button-small" href="#demo">Try live demo <span>↗</span></a>
   </nav>
@@ -168,14 +172,61 @@
           <h3>One item can't be fully verified.</h3>
           <p>Expected: Ceramic Mug, USB-C Cable, Notebook<br />Visible: Ceramic Mug, Notebook, partial USB-C Cable</p>
           <div class="review-actions">
-            <button class="decision" data-result="Capture another layer">
+            <button class="decision" data-result="Capture another layer" type="button">
               <span>↻</span> Capture another layer
             </button>
-            <button class="decision" data-result="Held for manual check">
+            <button class="decision" data-result="Held for manual check" type="button">
               <span>!</span> Hold for manual check
             </button>
           </div>
           <div class="decision-result" aria-live="polite">Select a resolution to update this order.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="operations container" id="operations">
+      <div class="section-head">
+        <p class="eyebrow">Operator tools</p>
+        <h2>Keep the line moving.</h2>
+        <p>Use the live order board to filter, triage, and resolve pack exceptions with one click.</p>
+      </div>
+
+      <div class="ops-shell">
+        <aside class="ops-panel">
+          <div class="ops-toolbar">
+            <label class="search-box">
+              <span>Search orders</span>
+              <input id="order-search" type="search" placeholder="Search by order ID or station" aria-label="Search orders" />
+            </label>
+            <div class="filter-group" aria-label="Filter orders">
+              <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+              <button class="filter-btn" data-filter="review" type="button">Review</button>
+              <button class="filter-btn" data-filter="ready" type="button">Ready</button>
+              <button class="filter-btn" data-filter="hold" type="button">Hold</button>
+            </div>
+          </div>
+          <div id="order-list" class="order-list" aria-live="polite"></div>
+        </aside>
+
+        <div class="ops-detail">
+          <div class="status-row">
+            <span id="detail-status" class="detail-status is-review">Needs review</span>
+          </div>
+          <h3 id="active-order-title">Order #PM-52904</h3>
+          <p id="active-order-meta" class="detail-meta">Station 04 · Layer 2 · 3 items</p>
+
+          <div id="evidence-list" class="evidence-list" aria-live="polite"></div>
+
+          <div class="action-row">
+            <button class="action action-primary" type="button" data-order-action="approve">Approve</button>
+            <button class="action" type="button" data-order-action="capture">Request capture</button>
+            <button class="action is-warning" type="button" data-order-action="hold">Hold</button>
+          </div>
+
+          <div class="log-card">
+            <h4>Recent station actions</h4>
+            <ul id="decision-log" class="decision-log"></ul>
+          </div>
         </div>
       </div>
     </section>
